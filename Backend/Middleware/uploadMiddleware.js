@@ -1,39 +1,3 @@
-// import multer from "multer";
-// import { CloudinaryStorage } from "multer-storage-cloudinary";
-// import cloudinary from "../config/cloudinary.js";
-
-// const storage = new CloudinaryStorage({
-//   cloudinary,
-
-//   params: async (req, file) => ({
-//     folder: "members",
-//     resource_type: "image",
-//     public_id: `${Date.now()}-${file.originalname.split(".")[0]}`,
-//     allowed_formats: ["jpg", "jpeg", "png", "webp"],
-//   }),
-// });
-
-// const upload = multer({
-//   storage: multer.memoryStorage(),
-//   limits: {
-//     fileSize: 5 * 1024 * 1024, // 5MB
-//   },
-// });
-
-//   fileFilter: (req, file, cb) => {
-//     const allowed = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-
-//     if (allowed.includes(file.mimetype)) {
-//       cb(null, true);
-//     } else {
-//       cb(new Error("Only JPG, JPEG, PNG and WEBP images are allowed."));
-//     }
-//   },
-// });
-
-// export default upload;
-
-
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import cloudinary from "../config/cloudinary.js";
