@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import api from "../service/api";
 import { Calendar, FileText, User, Plus, X, Loader2, CheckCircle2, AlertCircle, Clock } from "lucide-react";
 
+
 export default function EmployeeAttendancePage() {
   const [formData, setFormData] = useState({
     name: "",
