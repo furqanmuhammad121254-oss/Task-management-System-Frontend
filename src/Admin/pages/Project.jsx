@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../service/api.js"
 
 const API_BASE_URL = "http://localhost:5000/api/projects";
 
@@ -58,7 +58,7 @@ const Project = () => {
     }
     const fetchProjects = async () => {
       try {
-        const res = await axios.get(API_BASE_URL);
+        const res = await api.get(API_BASE_URL);
         setProjects(res.data);
       } catch (err) {
         console.error(err.message);
@@ -73,7 +73,7 @@ const Project = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get(
+      const res = await api.get(
         "http://localhost:5000/api/members"
       );
 
@@ -103,7 +103,7 @@ const Project = () => {
   const handleSubmit = async () => {
     try {
       if (editingId) {
-        const res = await axios.put(
+        const res = await api.put(
           `${API_BASE_URL}/${editingId}`,
           formData
         );
@@ -114,7 +114,7 @@ const Project = () => {
 
         setEditingId(null);
       } else {
-        const res = await axios.post(API_BASE_URL, formData);
+        const res = await api.post(API_BASE_URL, formData);
         setProjects((prev) => [...prev, res.data]);
       }
 
@@ -149,7 +149,7 @@ const Project = () => {
     if (!window.confirm("Delete project?")) return;
 
     try {
-      await axios.delete(`${API_BASE_URL}/${id}`);
+      await api.delete(`${API_BASE_URL}/${id}`);
       setProjects((prev) => prev.filter((p) => p._id !== id));
     } catch (err) {
       console.error(err.message);
@@ -171,7 +171,7 @@ const Project = () => {
   // ---------------- ADD TASK ----------------
   const addTask = async () => {
     try {
-      const res = await axios.post(
+      const res = await api.post(
         `${API_BASE_URL}/${selectedProject._id}/tasks`,
         taskForm
       );
@@ -198,7 +198,7 @@ const Project = () => {
   // task update 
   const updateTask = async () => {
     try {
-      const res = await axios.put(
+      const res = await api.put(
         `http://localhost:5000/api/projects/${selectedProject._id}/tasks/${editTask._id}`,
         taskForm
       );
@@ -225,7 +225,7 @@ const Project = () => {
   // task delete 
   const deleteTask = async (taskId) => {
     try {
-      const res = await axios.delete(
+      const res = await api.delete(
         `http://localhost:5000/api/projects/${selectedProject._id}/tasks/${taskId}`
       );
 
@@ -252,7 +252,7 @@ const Project = () => {
 
       formData.append("file", file);
 
-      const res = await axios.post(
+      const res = await api.post(
         `http://localhost:5000/api/projects/${selectedProject._id}/documents`,
         formData,
         {
