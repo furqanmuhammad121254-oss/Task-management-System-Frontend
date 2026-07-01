@@ -126,11 +126,11 @@ const Project = () => {
   };
 
   // ---------------- EDIT ----------------
-  // const handleEdit = (project) => {
-  //   setFormData(project);
-  //   setEditingId(project._id);
-  //   setShowForm(true);
-  // };
+  const handleEdit = (project) => {
+    setFormData(project);
+    setEditingId(project._id);
+    setShowForm(true);
+  };
   const handleEditTask = (task) => {
 
     setFormData({
