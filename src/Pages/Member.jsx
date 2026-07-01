@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from "../service/api.js"; 
 import { Mail, Phone, User } from 'lucide-react';
 
+
 const Members = () => {
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);

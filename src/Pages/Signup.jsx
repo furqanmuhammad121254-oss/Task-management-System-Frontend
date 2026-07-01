@@ -6,7 +6,7 @@ import api from "../service/api.js";
 
 const Signup = () => {
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -112,7 +112,7 @@ const Signup = () => {
             required
           />
 
-          <input
+          {/* <input
             type="password"
             name="password"
             placeholder="Password"
@@ -120,7 +120,26 @@ const Signup = () => {
             onChange={handleChange}
             className="w-full border p-3 rounded"
             required
-          />
+          /> */}
+          <div className="relative">
+  <input
+    type={showPassword ? "text" : "password"}
+    name="password"
+    placeholder="Password"
+    value={formData.password}
+    onChange={handleChange}
+    className="w-full border p-3 rounded pr-16"
+    required
+  />
+
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-600 hover:text-blue-800"
+  >
+    {showPassword ? "Hide" : "Show"}
+  </button>
+</div>
 
           <select
             name="role"

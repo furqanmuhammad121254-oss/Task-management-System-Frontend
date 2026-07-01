@@ -6,7 +6,7 @@ import api from "../service/api";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -93,8 +93,8 @@ const Login = () => {
         {status.message && (
           <div
             className={`p-3 text-sm rounded-lg text-center font-medium ${status.type === "error"
-                ? "bg-red-50 text-red-600"
-                : "bg-green-50 text-green-600"
+              ? "bg-red-50 text-red-600"
+              : "bg-green-50 text-green-600"
               }`}
           >
             {status.message}
@@ -121,14 +121,25 @@ const Login = () => {
             <label className="block text-sm font-semibold mb-1">
               Password
             </label>
-            <input
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-4 py-3 border rounded-lg"
-              required
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full border p-3 rounded pr-16"
+                required
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-blue-600 hover:text-blue-800"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
 
           {/* Role Select */}
