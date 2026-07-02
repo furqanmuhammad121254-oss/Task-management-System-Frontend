@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../service/api.js"
 
-const API_BASE_URL = "http://localhost:5000/api/projects";
+const API_BASE_URL = "/api/projects";
 
 const Project = () => {
   // ---------------- STATES ----------------
@@ -44,28 +44,45 @@ const Project = () => {
   });
 
   // ---------------- FETCH PROJECTS ----------------
+  // useEffect(() => {
+  //   if (editTask) {
+  //     setTaskForm({
+  //       name: editTask.name || "",
+  //       description: editTask.description || "",
+  //       status: editTask.status || "",
+  //       member: editTask.member || "",
+  //       skill: editTask.skill || "",
+  //       startDate: editTask.startDate || "",
+  //       endDate: editTask.endDate || "",
+  //     });
+  //   }
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const res = await api.get(API_BASE_URL);
+  //       setProjects(res.data);
+  //     } catch (err) {
+  //       console.error(err.message);
+  //     }
+  //   };
+  //   fetchProjects();
+  // }, [editTask], []);
   useEffect(() => {
-    if (editTask) {
+   fetchProjects();
+}, []);
+
+useEffect(() => {
+   if(editTask){
       setTaskForm({
-        name: editTask.name || "",
-        description: editTask.description || "",
-        status: editTask.status || "",
-        member: editTask.member || "",
-        skill: editTask.skill || "",
-        startDate: editTask.startDate || "",
-        endDate: editTask.endDate || "",
+         name: editTask.name || "",
+         description: editTask.description || "",
+         status: editTask.status || "",
+         member: editTask.member || "",
+         skill: editTask.skill || "",
+         startDate: editTask.startDate || "",
+         endDate: editTask.endDate || "",
       });
-    }
-    const fetchProjects = async () => {
-      try {
-        const res = await api.get(API_BASE_URL);
-        setProjects(res.data);
-      } catch (err) {
-        console.error(err.message);
-      }
-    };
-    fetchProjects();
-  }, [editTask], []);
+   }
+}, [editTask]);
 
   useEffect(() => {
     fetchMembers();
@@ -74,7 +91,7 @@ const Project = () => {
   const fetchMembers = async () => {
     try {
       const res = await api.get(
-        "http://localhost:5000/api/members"
+        "/api/members"
       );
 
       setMembers(res.data);
@@ -199,7 +216,7 @@ const Project = () => {
   const updateTask = async () => {
     try {
       const res = await api.put(
-        `http://localhost:5000/api/projects/${selectedProject._id}/tasks/${editTask._id}`,
+        `${API_BASE_URL}/${selectedProject._id}/tasks/${editTask._id}`,
         taskForm
       );
 
@@ -226,7 +243,7 @@ const Project = () => {
   const deleteTask = async (taskId) => {
     try {
       const res = await api.delete(
-        `http://localhost:5000/api/projects/${selectedProject._id}/tasks/${taskId}`
+        `${API_BASE_URL}/${selectedProject._id}/tasks/${taskId}`
       );
 
       const updatedProject = res.data;
@@ -253,7 +270,7 @@ const Project = () => {
       formData.append("file", file);
 
       const res = await api.post(
-        `http://localhost:5000/api/projects/${selectedProject._id}/documents`,
+        `${API_BASE_URL}/${selectedProject._id}/documents`,
         formData,
         {
           headers: {
@@ -278,8 +295,8 @@ const Project = () => {
   //image remove
   const handleRemoveDocument = async (documentId) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/projects/${selectedProject._id}/documents/${documentId}`
+      await api.delete(
+        `${API_BASE_URL}/${selectedProject._id}/documents/${documentId}`
       );
 
       setSelectedProject((prev) => ({
