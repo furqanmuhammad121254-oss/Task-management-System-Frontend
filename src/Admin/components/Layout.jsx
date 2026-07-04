@@ -1,140 +1,4 @@
 
-// import React from "react";
-// import { Outlet, Link, useNavigate } from "react-router-dom";
-// import api from "../../service/api.js";
-// import {LogOut} from "lucide-react";
-
-// const Layout = () => {
-//   const navigate = useNavigate();
-
-//   const handleLogout = async () => {
-//     try {
-//       await api.post("/user/logout");
-
-//       // clear all auth data
-//       localStorage.removeItem("user");
-//       localStorage.removeItem("token"); // if you store token separately
-
-//       // optional: full reset (safe)
-//       sessionStorage.clear();
-
-//       navigate("/login", { replace: true });
-
-//     } catch (error) {
-//       console.log("Logout error:", error);
-
-//       // fallback logout (if backend fails)
-//       localStorage.clear();
-//       navigate("/login", { replace: true });
-//     }
-//   };
-
-//   return (
-//     <div className="flex h-screen">
-
-//       {/* SIDEBAR */}
-//       <div className="w-64 bg-sky-950 text-white p-4">
-//         <h2 className="text-2xl font-bold mb-6">Menu</h2>
-
-//         <ul className="space-y-1.5">
-
-//           <li>
-//             <Link
-//               to="/admin/dashboard"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-sky-200 hover:bg-sky-900 hover:text-white"
-//             >
-//               Dashboard
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link
-//               to="/admin/users"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:bg-sky-900"
-//             >
-//               Users
-//             </Link>
-//           </li>
-
-//            <li>
-//             <Link
-//               to="/admin/project"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:bg-sky-900"
-//             >
-//               Projects
-//             </Link>
-//           </li>
-
-//            <li>
-//             <Link
-//               to="/admin/members"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:bg-sky-900"
-//             >
-//               Members
-//             </Link>
-//           </li>
-
-//            <li>
-//             <Link
-//               to="/admin/attendance"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-white hover:bg-sky-900"
-//             >
-//               Attendance
-//             </Link>
-//           </li>
-          
-//            <li>
-//             <Link
-//               to="/admin/memberwarning"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-sky-200 hover:bg-sky-900 hover:text-white"
-//             >
-//               Member Warning
-//             </Link>
-//           </li>
-
-
-//           <li>
-//             <Link
-//               to="/admin/profile"
-//               className="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-sky-200 hover:bg-sky-900 hover:text-white"
-//             >
-//               Profile
-//             </Link>
-//           </li>
-
-         
-//         </ul>
-//       </div>
-
-//       {/* MAIN AREA */}
-//       <div className="flex-1 flex flex-col">
-
-//         {/* NAVBAR */}
-//         <div className="bg-sky-900 text-white px-6 py-4 flex justify-between items-center shadow-md">
-//           <h1 className="text-xl font-bold">Admin Panel</h1>
-
-//           <button
-//             onClick={handleLogout}
-//             className="inline-flex items-center gap-2 text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100/80 border border-rose-200/60 px-3.5 py-2 rounded-xl transition-all active:scale-95 shadow-sm shadow-rose-100"
-//           >
-//             <LogOut size={14} />
-//             <span>Sign Out</span>
-//           </button>
-//         </div>
-
-//         {/* CONTENT */}
-//         <div className="flex-1">
-//           <Outlet />
-//         </div>
-
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Layout;
-
-
 import React, { useState } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import api from "../../service/api.js";
@@ -286,15 +150,8 @@ const Layout = () => {
           </ul>
         </nav>
 
-        {/* SIDEBAR FOOTER METRIC */}
-        <div className="p-4 border-t border-sky-900 bg-sky-950/40 flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-sky-900 border border-sky-800 flex items-center justify-center font-bold text-sm text-sky-300">
-            AM
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-sky-100 truncate">System Root Admin</p>
-          </div>
-        </div>
+       
+       
 
       </aside>
 
@@ -313,12 +170,6 @@ const Layout = () => {
             >
               <Menu size={20} />
             </button>
-
-            <h1 className="text-base sm:text-lg font-bold tracking-tight">Admin Panel</h1>
-            <span className="hidden sm:inline-block h-4 w-px bg-sky-800" />
-            <span className="hidden sm:inline-block text-[10px] bg-sky-950 px-2.5 py-1 rounded-md font-semibold text-sky-300 uppercase tracking-wider">
-              Secure Core
-            </span>
           </div>
 
           {/* RIGHT ACTION CONTROLS */}

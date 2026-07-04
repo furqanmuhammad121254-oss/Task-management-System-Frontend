@@ -80,7 +80,7 @@ export default function EmployeeAttendancePage() {
           }`}
         >
           {showForm ? <X size={15} /> : <Plus size={15} />}
-          <span>{showForm ? "Dismiss Form" : "Create Request"}</span>
+          <span>{showForm ? "Close Form" : "Create Request"}</span>
         </button>
       </div>
 
@@ -118,25 +118,23 @@ export default function EmployeeAttendancePage() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500">Absence Allocation Type</label>
+            <label className="text-xs font-semibold text-slate-500"> Attendance Type </label>
             <select
               value={formData.type}
               onChange={(e) => setFormData({ ...formData, type: e.target.value })}
               className="w-full bg-slate-50/50 border border-slate-200 px-3 py-2.5 rounded-xl text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors text-slate-700"
             >
               <option value="Leave">Leave</option>
-              <option value="Half Day">Half Day</option>
-              <option value="Work From Home">Work From Home</option>
             </select>
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-500">Justification / Reason</label>
+            <label className="text-xs font-semibold text-slate-500"> Reason for Request </label>
             <textarea
               placeholder="State structural reasoning for request configuration..."
               value={formData.reason}
               onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
-              rows="3"
+              rows="1"
               className="w-full bg-slate-50/50 border border-slate-200 p-3 rounded-xl text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
               required
             />
@@ -147,7 +145,7 @@ export default function EmployeeAttendancePage() {
               type="submit"
               className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-5 py-2.5 rounded-xl transition-all shadow-sm active:scale-95 shadow-green-900/10"
             >
-              Submit Request Pipeline
+              Submit Request
             </button>
           </div>
         </form>

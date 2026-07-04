@@ -285,7 +285,7 @@ const Project = () => {
         {/* HEADER SECTION */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-200 pb-5 mb-8">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Project Dashboard</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Project Management</h1>
             <p className="text-sm text-slate-500 mt-1">Manage and track your operational company projects seamlessly.</p>
           </div>
           <button
@@ -449,7 +449,7 @@ const Project = () => {
                   type="submit"
                   className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-5 py-2 rounded-lg text-sm shadow-md shadow-indigo-600/10 hover:shadow-indigo-600/20 transition-all"
                 >
-                  {editingId ? "Save Changes" : "Create Project"}
+                  {editingId ? "Update" : "Create Project"}
                 </button>
               </div>
             </form>
