@@ -47,7 +47,7 @@ const Desboard = () => {
 
       {/* HEADER */}
       <h1 className="text-2xl font-bold mb-6">
-        Employee Dashboard
+        Admin Dashboard
       </h1>
 
       {/* CARDS */}
