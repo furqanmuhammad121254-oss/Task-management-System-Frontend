@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import api from "../service/api";
 
-const PROJECT_API = "http://localhost:5000/api/projects";
+const PROJECT_API = "/api/projects";
 
 const ProjectManager = () => {
     const [projects, setProjects] = useState([]);
@@ -33,7 +33,7 @@ const ProjectManager = () => {
 
     const handleCompleteProject = async (projectId) => {
         try {
-            await api.put(`http://localhost:5000/api/projects/${projectId}`, {
+            await api.put(`/api/projects/${projectId}`, {
                 status: "Completed"
             });
 
@@ -110,9 +110,7 @@ const ProjectManager = () => {
                         <span className="text-gray-300 ">→</span>
                         <span>🏁</span>
                         <span>{project.endDate?.slice(0, 10) || "N/A"}</span>
-                        {/* <div className="flex items-center gap-1.5 font-medium text-gray-500 mb-3">
-                            
-                        </div> */}
+                       
 
                         <div className="border-t border-gray-100 flex flex-col gap-3">
                             <div className="flex items-center justify-between text-xs text-gray-400">
@@ -123,14 +121,7 @@ const ProjectManager = () => {
                                 </p>
                             </div>
 
-                            {/* {project.status?.toLowerCase() !== "completed" && (
-                                <button
-                                    onClick={() => handleCompleteProject(project._id)}
-                                    className="w-full mt-1 bg-green-600 hover:bg-green-700 text-white font-medium py-1.5 px-3 rounded-xl text-xs transition duration-200 flex items-center justify-center gap-1"
-                                >
-                                    ✓ Mark as Completed
-                                </button>
-                            )} */}
+                            
                         </div>
                     </div>
                 ))}
