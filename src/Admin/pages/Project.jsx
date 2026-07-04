@@ -203,9 +203,6 @@ const Project = () => {
 
       setSelectedProject(updatedProject);
 
-      // FIX #2: resetForm() was called here but never defined anywhere in
-      // the file, which threw "resetForm is not defined" right after a
-      // successful task update. Replaced with an inline reset of taskForm.
       setEditTask(null);
       setTaskForm(initialTaskFormState);
     } catch (error) {
@@ -233,7 +230,6 @@ const Project = () => {
       console.log(error);
     }
   };
-
 
   // ---------------- UPLOAD FILE ----------------
   const uploadFile = async (file) => {
@@ -501,10 +497,7 @@ const Project = () => {
                     </span>
 
                     <div className="flex items-center gap-1">
-                      {/* FIX #3: this previously called handleEditTask(task) with
-                          an undefined `task` variable (there is no task in scope
-                          on a project card), which threw a ReferenceError on click.
-                          This card edits the *project*, so it now calls handleEdit. */}
+                      
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
