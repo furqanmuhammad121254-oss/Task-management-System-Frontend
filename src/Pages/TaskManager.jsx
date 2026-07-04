@@ -259,6 +259,7 @@ const TaskManager = () => {
                       onClick={() => handleCompleteTask(task)}
                       className="w-full bg-green-600 hover:bg-green-700 text-white text-xs font-medium py-2 rounded-xl transition-colors"
                     >
+                    
                       ✓ Task as Completed
                     </button>
                   )}
