@@ -106,7 +106,7 @@ export default function EmployeeAttendancePage() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-500">Effective Date</label>
+              <label className="text-xs font-semibold text-slate-500"> Date</label>
               <input
                 type="date"
                 value={formData.date}
